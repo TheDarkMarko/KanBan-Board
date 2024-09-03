@@ -17,6 +17,9 @@ Persistent Storage: Tasks are automatically saved in localStorage, allowing you 
 # Technologies Used
 
 HTML5: Structure of the application.
+
 CSS3: Styling the user interface.
+
 JavaScript (ES6+): Implementing functionality, DOM manipulation, and drag-and-drop operations.
+
 Local Storage: Storing tasks on the client side.
