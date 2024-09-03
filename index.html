@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Kanban Board</h1>
+        <button id="addTaskBtn">Dodaj Zadatak</button>
+    </header>
+    <main>
+        <div class="board">
+            <div class="column" data-status="todo">
+                <h2>To Do</h2>
+                <div class="task-list" id="todo"></div>
+            </div>
+            <div class="column" data-status="in-progress">
+                <h2>In Progress</h2>
+                <div class="task-list" id="in-progress"></div>
+            </div>
+            <div class="column" data-status="done">
+                <h2>Done</h2>
+                <div class="task-list" id="done"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal za dodavanje/editovanje zadataka -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Dodaj Zadatak</h2>
+            <form id="taskForm">
+                <label for="taskTitle">Naslov:</label>
+                <input type="text" id="taskTitle" name="taskTitle" required>
+                
+                <label for="taskDescription">Opis:</label>
+                <textarea id="taskDescription" name="taskDescription" required></textarea>
+                
+                <label for="taskStatus">Status:</label>
+                <select id="taskStatus" name="taskStatus">
+                    <option value="todo">To Do</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="done">Done</option>
+                </select>
+                
+                <input type="hidden" id="taskId">
+                <button type="submit">Sačuvaj</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
