@@ -29,7 +29,6 @@ taskForm.addEventListener('submit', (e) => {
     const id = taskIdInput.value;
 
     if (id) {
-        // Uređivanje postojećeg zadatka
         tasks = tasks.map(task => task.id === id ? { ...task, title, description, status } : task);
     } else {
         // Dodavanje novog zadatka
@@ -109,8 +108,7 @@ function createTaskCard(task) {
     div.appendChild(title);
     div.appendChild(desc);
     div.appendChild(actions);
-
-    // Dodavanje drag-and-drop događaja
+
     div.addEventListener('dragstart', handleDragStart);
     div.addEventListener('dragend', handleDragEnd);
 
@@ -168,7 +166,6 @@ function handleDrop(e) {
         renderTasks();
     }
 }
-
-// Inicijalizacija aplikacije
+
 loadTasks();
 renderTasks();
