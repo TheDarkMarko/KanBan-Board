@@ -1,4 +1,3 @@
-// Selektovanje elemenata
 const addTaskBtn = document.getElementById('addTaskBtn');
 const taskModal = document.getElementById('taskModal');
 const closeModal = document.querySelector('.close');
@@ -7,25 +6,21 @@ const modalTitle = document.getElementById('modalTitle');
 const taskIdInput = document.getElementById('taskId');
 
 let tasks = [];
-
-// Otvaranje modal prozora za dodavanje zadatka
+
 addTaskBtn.addEventListener('click', () => {
     openModal();
 });
-
-// Zatvaranje modal prozora
+
 closeModal.addEventListener('click', () => {
     closeTaskModal();
 });
-
-// Klik van modal prozora zatvara modal
+
 window.addEventListener('click', (e) => {
     if (e.target == taskModal) {
         closeTaskModal();
     }
 });
 
-// Obrada submit događaja forme
 taskForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const title = document.getElementById('taskTitle').value.trim();
@@ -51,8 +46,7 @@ taskForm.addEventListener('submit', (e) => {
     renderTasks();
     closeTaskModal();
 });
-
-// Funkcija za otvaranje modal prozora
+
 function openModal(task = null) {
     taskModal.style.display = 'block';
     if (task) {
@@ -67,13 +61,11 @@ function openModal(task = null) {
         taskIdInput.value = '';
     }
 }
-
-// Funkcija za zatvaranje modal prozora
+
 function closeTaskModal() {
     taskModal.style.display = 'none';
 }
-
-// Funkcija za renderovanje zadataka na tabli
+
 function renderTasks() {
     const statuses = ['todo', 'in-progress', 'done'];
     statuses.forEach(status => {
@@ -86,8 +78,7 @@ function renderTasks() {
              });
     });
 }
-
-// Funkcija za kreiranje HTML elementa zadatka
+
 function createTaskCard(task) {
     const div = document.createElement('div');
     div.classList.add('task');
@@ -125,28 +116,24 @@ function createTaskCard(task) {
 
     return div;
 }
-
-// Funkcija za brisanje zadatka
+
 function deleteTask(id) {
     tasks = tasks.filter(task => task.id !== id);
     saveTasks();
     renderTasks();
 }
-
-// Čuvanje zadataka u localStorage
+
 function saveTasks() {
     localStorage.setItem('kanbanTasks', JSON.stringify(tasks));
 }
-
-// Učitavanje zadataka iz localStorage
+
 function loadTasks() {
     const storedTasks = localStorage.getItem('kanbanTasks');
     if (storedTasks) {
         tasks = JSON.parse(storedTasks);
     }
 }
-
-// Drag and Drop funkcionalnosti
+
 let draggedTask = null;
 
 function handleDragStart(e) {
@@ -158,8 +145,7 @@ function handleDragEnd(e) {
     this.classList.remove('dragging');
     draggedTask = null;
 }
-
-// Dodavanje događaja na kolone za drop
+
 const columns = document.querySelectorAll('.task-list');
 columns.forEach(column => {
     column.addEventListener('dragover', handleDragOver);
